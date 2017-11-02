@@ -19,11 +19,17 @@ function jokeFetcher ($http) {
 
 function mainCtrl ($scope, jokeFetcher, $http) {
   $scope.jokes = [];
+  $scope.randomJoke = {};
 
   jokeFetcher.get()
     .then(function (data) {
       $scope.jokes = data
+	  $scope.randomJoke = $scope.jokes[Math.floor(Math.random() * $scope.jokes.length)];
     });
+	
+  $scope.newJoke = function() {
+	  $scope.randomJoke = $scope.jokes[Math.floor(Math.random() * $scope.jokes.length)];
+  };
 
   $scope.addJoke = function() {
    var formData = {question:$scope.Question,answer:$scope.Answer, upvotes:0};
@@ -40,5 +46,7 @@ function mainCtrl ($scope, jokeFetcher, $http) {
     }).error(function(data, status, headers, config) {
       console.log("Post failed");
   });
-}
+  
+};
+
 }

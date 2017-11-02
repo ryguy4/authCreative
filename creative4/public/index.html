@@ -3,6 +3,7 @@
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
 <script src="javascripts/app.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
   <meta charset="utf-8">
   <title>Joke Book</title>
@@ -11,16 +12,16 @@
   <div id='app' ng-app='app' ng-controller='mainCtrl'>
 <h1>Submit A New Joke!</h1>
 <form id="newJoke" ng-submit="addJoke()">
-Question: <input type="text" ng-model="Question" value=""><br>
-Answer: <input type="text" ng-model="Answer" value=""><br>
-<input type='submit' value='Submit'>
+Question: <input type="text" class="form-control" ng-model="Question" value=""><br>
+Answer: <input type="text" class="form-control" ng-model="Answer" value=""><br>
+<input type='submit' class="btn btn-default" value='Submit'>
 </form>
     <ul ng-if='jokes.length' class='list center stretch'>
-      <li ng-repeat='p in jokes' class='jokes'>
-        <h1>{{ p.question }}</h1>
-        <h1>{{ p.answer }}</h1>
-      </li>
+		{{randomJoke.question}} <br>
+		{{randomJoke.answer}} <br>
     </ul>
+	
+	<button class="btn btn-default" ng-click="newJoke()">Random Joke</button>
 </div>
 </body>
 
