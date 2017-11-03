@@ -9,19 +9,26 @@
   <title>Joke Book</title>
 </head>
 <body>
+<div class="container">
   <div id='app' ng-app='app' ng-controller='mainCtrl'>
-<h1>Submit A New Joke!</h1>
+
+<div class="well well-lg">
+    <div class="text-center" ng-if='jokes.length'>
+	{{randomJoke.question}} <br>
+	{{randomJoke.answer}} <br>
+    </div>
+	<div class="text-center">
+	<button class="btn btn-info btn-sm" ng-click="newJoke()">Get A Random Joke!</button>
+	</div>
+	</div>
+	<br><br><br>
+<h2>Add A Joke To The Joke Book!</h2>
 <form id="newJoke" ng-submit="addJoke()">
-Question: <input type="text" class="form-control" ng-model="Question" value=""><br>
-Answer: <input type="text" class="form-control" ng-model="Answer" value=""><br>
-<input type='submit' class="btn btn-default" value='Submit'>
+<label for="text">Question:</label><input type="text" class="form-control" ng-model="Question" value=""><br>
+<label for="punchline">Answer:</label><input type="punchline" class="form-control" ng-model="Answer" value=""><br>
+<input type='submit' class="btn btn-info btn-sm" value='Submit'>
 </form>
-    <ul ng-if='jokes.length' class='list center stretch'>
-		{{randomJoke.question}} <br>
-		{{randomJoke.answer}} <br>
-    </ul>
-	
-	<button class="btn btn-default" ng-click="newJoke()">Random Joke</button>
+</div>
 </div>
 </body>
 

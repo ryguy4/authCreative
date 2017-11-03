@@ -1,7 +1,7 @@
 var app = window.angular.module('app', [])
 
-app.factory('jokeFetcher', jokeFetcher)
-app.controller('mainCtrl', mainCtrl)
+app.factory('jokeFetcher', jokeFetcher);
+app.controller('mainCtrl', mainCtrl);
 
 function jokeFetcher ($http) {
   
@@ -15,7 +15,7 @@ function jokeFetcher ($http) {
         })
     }
   }
-  }
+  };
 
 function mainCtrl ($scope, jokeFetcher, $http) {
   $scope.jokes = [];
@@ -36,6 +36,7 @@ function mainCtrl ($scope, jokeFetcher, $http) {
    $scope.Question = "";
    $scope.Answer = "";
    //console.log(formData);
+
    var jokeURL = 'getJoke';
    $http({
      url: jokeURL,
@@ -46,7 +47,10 @@ function mainCtrl ($scope, jokeFetcher, $http) {
     }).error(function(data, status, headers, config) {
       console.log("Post failed");
   });
-  
+     jokeFetcher.get()
+    .then(function (data) {
+      $scope.jokes = data
+    });
 };
 
 }
