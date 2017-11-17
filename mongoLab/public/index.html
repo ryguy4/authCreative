@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>The Joke Book!</title>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="javascripts/app.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="stylesheets/style.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body ng-app="joke" ng-controller="MainCtrl">
+<div class="container">
+<div class="panel panel-primary">
+
+<div class="panel-heading"><h1>Submit Your Jokes To The Joke Book!</h1></div>
+<div class="panel-body">
+<form ng-submit="addJoke()">
+    <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-question-sign"></i></span>
+      <input type="text" class="form-control" ng-model="formJoke" placeholder="Joke"></input>
+    </div>
+    <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-exclamation-sign"></i></span>
+      <input type="text" class="form-control" ng-model="formPunchLine" placeholder="Punch Line"></input>
+    </div>
+	<button class="btn btn-primary btn-sm" type="submit">Add Joke!</button>
+</form>
+<br>
+  <div class="text-center" ng-repeat="joke in jokes | orderBy: '-upvotes'" ng-show="(($index < (page * numRecords)) && ($index >= ((page - 1) * numRecords)))">
+  <div class="panel panel-default">
+  <div class="panel-body">
+	<br>
+	{{joke.joke}}
+	<br>
+	{{joke.punchLine}}
+	<br>
+    <span class="glyphicon glyphicon-remove" ng-click="delete(joke)"></span>
+    <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(joke)"></span>
+	<span class="glyphicon glyphicon-thumbs-down" ng-click="incrementUpvotesDown(joke)"></span>
+     - upvotes: {{joke.upvotes}}
+</div>
+</div>
+  </div>
+  <ul class="pager">
+  <li><a ng-click="back()">Previous Page</a></li>
+  <li><a ng-click="next()">Next Page</a></li>
+  </ul>
+</div>
+</div>
+</body>
+</html>
