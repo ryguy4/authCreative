@@ -27,9 +27,7 @@
             <label>Username:</label>
             <input class="form-control" type="text" id="username" name="username" ng-model="user.username" disabled><br>
             <label>Email:</label>
-            <input class="form-control" type="email" id="email" name="email" ng-model="user.email"><br>          
-            <label>Favorite Color:</label>
-            <input class="form-control" type="text" id="color" name="color" ng-model="user.color"><br>   
+            <input class="form-control" type="email" id="email" name="email" ng-model="user.email"><br>           
             <input class="btn btn-default" type="submit" id="save" value="Save">
         </form>
     </div>
@@ -37,9 +35,7 @@
         <input class="btn btn-default" type="submit" id="delete" value="Delete User">
     </form>
     <hr>
-    <span id="userMsg">
-    <%= msg %>
-    </span>
+
     <script src="http://code.angularjs.org/1.2.9/angular.min.js"></script>
     <script src="/javascripts/my_app.js"></script>
 </body>
